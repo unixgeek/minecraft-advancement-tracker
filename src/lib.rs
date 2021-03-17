@@ -9,10 +9,12 @@ use web_sys::console::warn_1;
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
+// todo Use advancement json files in minecraft jar?
+
 // todo serde-wasm-bindgen
 #[derive(Deserialize, Serialize)]
 pub struct Advancement {
-    pub name: String,
+    name: String,
     criteria: HashSet<String>,
     done: bool,
 }

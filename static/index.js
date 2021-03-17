@@ -12,10 +12,10 @@ import("../pkg").then(module => {
             let missing_advancements = module.get_missing_advancements(text);
             let html = "";
             missing_advancements.forEach(advancement => {
-                html += "<p>" + advancement.name + "</p>";
+                html += "<h1>" + capitalize(advancement.name.replace("minecraft:", "").replace("/", ": ").replaceAll("_", " ")) + "</h1>";
                 html += "<ul>";
                 advancement.criteria.forEach(criteria => {
-                    html += "<li>" + criteria + "</li>";
+                    html += "<li>" + criteria.replace("minecraft:", "").replaceAll("_", " ") + "</li>";
                 });
                 html += "</ul>";
             });
@@ -25,3 +25,14 @@ import("../pkg").then(module => {
     }
 }).catch(console.error);
 
+// Yeah yeah, too lazy to follow the "rules" and nobody cares about this app anyway.
+function capitalize(string) {
+    let capitalizedString = "";
+    string.split(" ").forEach(word => {
+        capitalizedString += word[0].toUpperCase();
+        capitalizedString += word.substring(1);
+        capitalizedString += " ";
+    })
+
+    return capitalizedString.trim();
+}

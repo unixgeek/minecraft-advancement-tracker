@@ -1,0 +1,22 @@
+body {
+    background-image: url("stone.png");
+}
+
+h1 {
+    /*background-color: #aa7e0f;*/
+    text-shadow: 2px 2px 5px black;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* todo using px seems wrong, but I suck at css. */
+li {
+    background: url("advancement_item.png") no-repeat;
+    height: 24px;
+    padding-left: 30px;
+    padding-top: 3px;
+}

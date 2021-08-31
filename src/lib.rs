@@ -86,7 +86,7 @@ fn parse_advancement_json(json: &str) -> HashMap<String, Advancement> {
 #[wasm_bindgen]
 pub fn get_missing_advancements(advancement_json: &str) -> Vec<JsValue> {
     // 1. Parse completed advancements to master list.
-    let master_json = include_str!("../5f7470a0-686e-4850-b89c-df74dd5c215b.json");
+    let master_json = include_str!("../advancements_master.json");
     let master_advancements = parse_advancement_json(&master_json);
 
     // Warn about incomplete advancements in the master file.

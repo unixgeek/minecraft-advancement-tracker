@@ -1,0 +1,30 @@
+[package]
+name = "minecraft-advancement-tracker"
+version = "0.2.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = true
+opt-level = "z"
+
+[dependencies]
+anyhow = "1.0.52"
+cfg-if = "1.0.0"
+console_error_panic_hook = { version = "0.1.7", optional = true }
+js-sys = "0.3.55"
+# serde_wasm_bindgen won't work for this project as it doesn't parse JSON.
+serde = { version = "1.0.132", features = ["derive"] }
+serde_json = "1.0.74"
+wasm-bindgen = { version = "0.2.78", features = ["serde-serialize"] }
+web-sys = { version = "0.3.55", features = ["console"] }
+wee_alloc = { version = "0.4.5", optional = true }
+
+# todo Need to find a way to have parcel enable different features for dev vs release.
+[features]
+# dev
+#default = ["console_error_panic_hook"]
+# release
+default = ["wee_alloc"]

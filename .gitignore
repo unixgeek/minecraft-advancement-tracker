@@ -1,5 +1,5 @@
-node_modules
-/dist
-/target
-/pkg
-/wasm-pack.log
+/.cache/
+/dist/
+/node_modules/
+/crate/target/
+/crate/pkg/

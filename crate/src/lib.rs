@@ -34,7 +34,7 @@ pub struct Advancement {
     done: bool,
 }
 
-static DATA_VERSION: u16 = 2865;
+static DATA_VERSION: u16 = 2975;
 
 static ADVANCEMENT_NAMESPACE_PREFIX: [&str; 5] = [
     "minecraft:adventure",
@@ -50,7 +50,7 @@ fn parse_advancement_json(json: &str) -> anyhow::Result<HashMap<String, Advancem
     if let Some(value) = root.get("DataVersion") {
         if let Some(data_version) = value.as_u64() {
             if data_version != DATA_VERSION as u64 {
-                warn_1(&format!("Advancement file is DataVersion {}, but this tool was tested with {}. Results may not be accurate.", data_version, DATA_VERSION).into());
+                warn_1(&format!("Advancement file is DataVersion {data_version}, but this tool was tested with {DATA_VERSION}. Results may not be accurate.").into());
             }
         }
     }
@@ -192,6 +192,6 @@ pub fn get_advancements(advancement_json: &str) -> Result<Vec<JsValue>, JsValue>
 pub fn get_advancement_namespace_prefixes() -> Vec<JsValue> {
     ADVANCEMENT_NAMESPACE_PREFIX
         .iter()
-        .map(|a| JsValue::from_serde(a).unwrap())
+        .map(|a| a.to_string().into())
         .collect()
 }

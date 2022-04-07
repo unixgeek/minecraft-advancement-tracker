@@ -34,9 +34,9 @@ pub struct Advancement {
     done: bool,
 }
 
-static DATA_VERSION: u16 = 2975;
+pub static DATA_VERSION: u16 = 2975;
 
-static ADVANCEMENT_NAMESPACE_PREFIX: [&str; 5] = [
+pub static ADVANCEMENT_NAMESPACE_PREFIX: [&str; 5] = [
     "minecraft:adventure",
     "minecraft:end",
     "minecraft:husbandry",
@@ -58,12 +58,12 @@ fn parse_advancement_json(json: &str) -> anyhow::Result<HashMap<String, Advancem
     let advancements: HashMap<String, Advancement> = root
         .iter()
         .filter_map(|(key, value)| {
-            // Example: minecraft:adventure/kill_all_mobs, should return minecraft::adventure.
+            // Example: minecraft:adventure/kill_all_mobs, should return minecraft:adventure.
             let namespace_prefix = key.split('/').next().unwrap_or_default();
 
             // This is the filter condition for the filter_map(). We only care about a subset.
             if ADVANCEMENT_NAMESPACE_PREFIX.contains(&namespace_prefix) {
-                // The name of teh advancement.
+                // The name of the advancement.
                 let name = key.clone();
 
                 // Determine if the advancement is done.

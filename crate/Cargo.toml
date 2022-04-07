@@ -1,10 +1,10 @@
 [package]
 name = "minecraft-advancement-tracker"
-version = "0.2.1"
+version = "0.3.0"
 edition = "2021"
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = ["cdylib", "rlib"]
 
 [profile.release]
 lto = true

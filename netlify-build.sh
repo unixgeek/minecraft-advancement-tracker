@@ -1,5 +1,4 @@
 #!/bin/sh -e
 rustup toolchain install stable
-rustup target add wasm32-unknown-unknown
-cargo install wasm-pack 
+curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 npm run build

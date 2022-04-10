@@ -10,7 +10,7 @@ have not been explored, in game.
 ## Release
 
     npm install
-    npm build
+    npm run build
 Artifacts will be located in `dist`.
 
 ## Development

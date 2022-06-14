@@ -34,7 +34,7 @@ pub struct Advancement {
     done: bool,
 }
 
-pub static DATA_VERSION: u16 = 2975;
+pub static DATA_VERSION: u16 = 3105;
 
 pub static ADVANCEMENT_NAMESPACE_PREFIX: [&str; 5] = [
     "minecraft:adventure",

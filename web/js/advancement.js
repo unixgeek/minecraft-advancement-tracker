@@ -40,12 +40,7 @@ class Advancement {
     }
 
     #filterCriterion(done) {
-        // Hack
-        if (this.name === "minecraft:husbandry/complete_catalogue") {
-            return this.criteria.filter(c => c.done === done).map(c => new CatCriterion(c));
-        } else {
-            return this.criteria.filter(c => c.done === done).map(c => new Criterion(c));
-        }
+        return this.criteria.filter(c => c.done === done).map(c => new Criterion(c));
     }
 }
 
@@ -60,13 +55,6 @@ class Criterion {
     getName() {
         // The name is in the format of minecraft:wooded_badlands. Take the value after ':' and format it.
         return titleCase(this.value.substring(this.value.indexOf(":") + 1).replaceAll("_", " "));
-    }
-}
-
-class CatCriterion extends Criterion {
-    getName() {
-        // The name is in the format of Textures/entity/cat/black.png. We want 'black' in this example.
-        return titleCase(this.value.substring(this.value.lastIndexOf("/") + 1, this.value.lastIndexOf(".")).replace("_", " "));
     }
 }
 

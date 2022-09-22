@@ -3,7 +3,6 @@
 import {getAdvancements, getCategories} from "./js/advancement";
 import bulmaCollapsible from '@creativebulma/bulma-collapsible';
 import createTabs from "./js/tabs";
-import getPlayerName from "./js/mojang";
 
 createTabs(getCategories().sort());
 
@@ -19,12 +18,6 @@ document.getElementById("file-selector").addEventListener("change", async event 
         displayError("There was an error processing the file.");
         return;
     }
-
-    // Get the player's UUID from the file name.
-    const uuid = file.name.substring(0, file.name.indexOf("."));
-
-    // Update player name from Mojang API.
-    const nameUpdate = getPlayerName(uuid);
 
     const sectionHtmlMap = new Map();
     getCategories().forEach(category => {
@@ -93,11 +86,6 @@ document.getElementById("file-selector").addEventListener("change", async event 
     });
 
     bulmaCollapsible.attach();
-
-    document.getElementById("player-name").innerText = await nameUpdate.catch(error => {
-        console.error(error);
-        displayError("There was an error getting player name");
-    });
 });
 
 function displayError(message) {

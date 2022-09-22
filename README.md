@@ -39,6 +39,6 @@ Follow these steps to update the master advancement file after a new Minecraft r
 
        cd crate
        # File name is based on player UUID, so use whatever file is there.
-       cargo run --bin filter_advancements ~/.minecraft/saves/Tracker/advancements/{YOUR_UUID}.json ../advancements_master.json 
+       cargo run --bin filter-advancements ~/.minecraft/saves/Tracker/advancements/{YOUR_UUID}.json ../advancements_master.json 
 4. Update `DATA_VERSION` in `crate/src/lib.rs` with the value provided in the output of the previous step.
 

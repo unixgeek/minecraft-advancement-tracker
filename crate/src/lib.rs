@@ -3,7 +3,10 @@ use serde::Serialize;
 use serde_json::{Map, Value};
 use std::collections::{HashMap, HashSet};
 use wasm_bindgen::prelude::*;
-use web_sys::console::warn_1;
+use web_sys::console::{info_1, warn_1};
+
+const PKG_NAME: &str = env!("CARGO_PKG_NAME");
+const PKG_VERSION: &str = env!("CARGO_PKG_VERSION");
 
 cfg_if! {
     if #[cfg(feature = "console_error_panic_hook")] {
@@ -11,13 +14,6 @@ cfg_if! {
     } else {
         #[inline]
         fn set_panic_hook() {}
-    }
-}
-
-cfg_if! {
-    if #[cfg(feature = "wee_alloc")] {
-        #[global_allocator]
-        static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
     }
 }
 
@@ -34,7 +30,7 @@ pub struct Advancement {
     done: bool,
 }
 
-pub static DATA_VERSION: u16 = 3105;
+pub static DATA_VERSION: u16 = 3120;
 
 pub static ADVANCEMENT_NAMESPACE_PREFIX: [&str; 5] = [
     "minecraft:adventure",
@@ -110,6 +106,8 @@ fn parse_advancement_json(json: &str) -> anyhow::Result<HashMap<String, Advancem
 #[wasm_bindgen]
 pub fn get_advancements(advancement_json: &str) -> Result<Vec<JsValue>, JsValue> {
     set_panic_hook();
+
+    info_1(&format!("{PKG_NAME}-{PKG_VERSION}").into());
 
     // Parse completed advancements to a master file.
     let master_json = include_str!("../../advancements_master.json");

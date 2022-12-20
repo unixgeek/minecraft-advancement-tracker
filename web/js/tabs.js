@@ -1,4 +1,4 @@
-import titleCase from "ap-style-title-case";
+import {apStyleTitleCase} from "ap-style-title-case";
 
 function createTabs(categories) {
     const bodyElement = document.querySelector("body");
@@ -7,7 +7,7 @@ function createTabs(categories) {
     const tabs = `
         <div class="tabs is-boxed">
             <ul>
-                ${categories.map(c => `<li data-tab="${c}"><a>${titleCase(c)}</a></li>`).join('')}
+                ${categories.map(c => `<li data-tab="${c}"><a>${apStyleTitleCase(c)}</a></li>`).join('')}
             </ul>
         </div>`;
     bodyElement.insertAdjacentHTML("beforeend", tabs);

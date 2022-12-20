@@ -30,7 +30,7 @@ pub struct Advancement {
     done: bool,
 }
 
-pub static DATA_VERSION: u16 = 3120;
+pub static DATA_VERSION: u16 = 3218;
 
 pub static ADVANCEMENT_NAMESPACE_PREFIX: [&str; 5] = [
     "minecraft:adventure",
@@ -182,7 +182,7 @@ pub fn get_advancements(advancement_json: &str) -> Result<Vec<JsValue>, JsValue>
 
     Ok(advancements
         .iter()
-        .map(|advancement| JsValue::from_serde(advancement).unwrap())
+        .map(|advancement| serde_wasm_bindgen::to_value(advancement).unwrap())
         .collect())
 }
 

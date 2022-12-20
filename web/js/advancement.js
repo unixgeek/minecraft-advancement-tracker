@@ -1,5 +1,5 @@
 import {get_advancement_namespace_prefixes, get_advancements} from "../../crate/Cargo.toml";
-import titleCase from "ap-style-title-case";
+import {apStyleTitleCase} from "ap-style-title-case";
 
 class Advancement {
     name;
@@ -24,7 +24,7 @@ class Advancement {
     }
 
     getName() {
-        return titleCase(this.name.substring(this.name.indexOf("/") + 1).replaceAll("_", " "));
+        return apStyleTitleCase(this.name.substring(this.name.indexOf("/") + 1).replaceAll("_", " "));
     }
 
     getCompletedCriteria() {
@@ -54,7 +54,7 @@ class Criterion {
 
     getName() {
         // The name is in the format of minecraft:wooded_badlands. Take the value after ':' and format it.
-        return titleCase(this.value.substring(this.value.indexOf(":") + 1).replaceAll("_", " "));
+        return apStyleTitleCase(this.value.substring(this.value.indexOf(":") + 1).replaceAll("_", " "));
     }
 }
 

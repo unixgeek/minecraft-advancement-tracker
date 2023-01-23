@@ -1,4 +1,4 @@
-# Advancement Tracker
+# Advancement Tracker [![Netlify Status](https://api.netlify.com/api/v1/badges/7dc58d28-0d75-44c2-ad74-109ff9b7fdc6/deploy-status)](https://app.netlify.com/sites/affectionate-newton-5bce0e/deploys)
 Simple tool to track progress on advancements in Minecraft: Java Edition. The best feature is being able to see what 
 criterion have not been met for advancements that have multiple, like exploring all biomes - you cannot see what biomes 
 have not been explored, in game.
